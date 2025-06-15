@@ -21,7 +21,11 @@
             padding: 0;
             box-sizing: border-box;
         }
-
+/*----------------------------- main ---------------*/
+        main {
+            flex-grow: 1;
+            padding-bottom: 0;
+        }
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
             line-height: 1.6;
@@ -30,7 +34,7 @@
             display: flex;
             flex-direction: column;
         }
-
+/*-------------------- header ----------------------- */
         header {
             background-color: var(--accent-lightbrown);
             padding: var(--spacing-unit);
@@ -47,19 +51,153 @@
             object-fit: cover;
             flex-shrink: 0;
         }
-
-        .school-logo {
-            width: 150px;
-            height: 150px;
-            object-fit: contain;
-            margin: var(--spacing-unit) auto;
-            display: block;
+       
+/*------------------ section ----------------------- */
+        section {
+            padding: 2rem var(--spacing-unit);
         }
 
-        h1 {
-            flex-grow: 1;
+        .edusection { 
+            background-color: var(--accent-beige);
+            color: var(--text-light);
+        }
+
+        .expsection {
+            background-color: var(--accent-purple);
+            color: var(--text-light)
+        }
+
+        .intsection {
+            background-color: var(--accent-lightgreen);
+            color: var(--text-light);
+        }
+
+        h2 {
             text-align: center;
-        }              
+            margin-bottom: 1.5rem;
+            color: inherit;
+        }
+/* -------------schools ----------------------*/
+
+        .schools {
+            display: flex;
+            flex-direction: row;
+            gap: 10px; 
+            flex-wrap: wrap;
+        }
+        .box {
+            width: min(600px, 100%); 
+            height: auto;
+            flex-shrink: 1;
+            justify-content: space-around;
+        }
+        .box ul {
+            padding-left: 30px;
+        }
+        .edusection h3 {
+            text-align: center;
+        }
+
+
+/*----------------------- card ---------------------- */
+         .card {
+            display: flex;
+            flex-direction: column;
+            object-fit: cover;
+            width: min(500px,90%);
+            height: max(500px);
+            flex-shrink: 1;
+            background-color: var(--primary-light);
+            border-radius: 8px;
+            box-shadow: 0 122px 16px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-unit);
+            margin: var(--spacing-unit) auto;
+            flex-shrink: 1;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-bottom: 0.6rem;
+            color: var(--text-dark);
+        }
+
+        .card p {
+            text-align: center;
+            color: var(--text-dark);
+            margin-bottom: 0.3rem;
+        }
+        .card a{
+            text-align: center;
+        }
+        /* Both images positioned absolutely to overlap */
+        .image-container { 
+            width: 360px;
+            height: auto;
+            display: block;
+            object-fit: cover;
+            padding-top: 10px;
+        }
+        .image-container img {
+            position: absolute; 
+            object-fit: cover;
+            justify-items: center;
+            animation-duration: 6s;         /* Full cycle duration */
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-fill-mode: forwards;
+            opacity: 0;
+        }
+
+        /* First image fades in immediately, fades out after 3s */
+        .image-container img.img1 {
+            animation-name: fadeInOut1;
+            opacity: 1; /* Show initially */
+        }
+
+        /* Second image appears after 3s and stays for 3s */
+        .image-container img.img2 {
+            opacity: 0; /* Start hidden */
+            animation-name: fadeInOut2;
+        }
+
+        /* Keyframes for image1: visible 0-3s, hidden 3-6s */
+        @keyframes fadeInOut1 {
+        0%, 49.99% { opacity: 1; }
+        50%, 100% { opacity: 0; }
+        }
+
+        /* Keyframes for image2: hidden 0-3s, visible 3-6s */
+        @keyframes fadeInOut2 {
+        0%, 49.99% { opacity: 0; }
+        50%, 100% { opacity: 1; }
+        }
+ /*___________  image card respomsiveness ----------- */
+                @media (max-width: 768px) {
+                    .card {
+                        width: calc(100% - 20px);
+                    }
+                }
+                 @media (max-width: 600px) {
+                    .card {
+                        width: 100%; 
+                        height: 500px ;
+                    }
+                }
+                @media (max-width: 480px) {
+                    .card {
+                        width: 100%;
+                        height: 500px;
+                    }
+                }
+ 
+                
+                h1 {
+                    flex-grow: 1;
+                    text-align: center;
+                }              
 /*-------------nav -------------------------*/    
         nav {    
             background-color: var(--accent-brown);
@@ -94,18 +232,7 @@
         nav ul li a:hover{
             background-color: var(--accent-purple);
         }
-/*--------------------card-------------------------*/
-        @media (max-width: 768px) {
-            .card {
-                width: calc(100% - 50px);
-            }
-        }
 
-        @media (max-width: 480px) {
-            .card {
-                width: auto;
-            }
-        }
 /*  ---------hamburger menu ----------------- */
         .hamburger {
             display: none;
@@ -157,67 +284,6 @@
             .hamburger.active span:nth-child(3) {
                 transform: rotate(-45deg) translate(5px, -5px);
             }
-/*----------------------------- main ---------------*/
-        main {
-            flex-grow: 1;
-            padding-bottom: 0;
-        }
-
-        section {
-            padding: 2rem var(--spacing-unit);
-        }
-
-        .edusection { 
-            background-color: var(--accent-beige);
-            color: var(--text-light);
-        }
-
-        .expsection {
-            background-color: var(--accent-purple);
-            color: var(--text-light)
-        }
-
-        .intsection {
-            background-color: var(--accent-lightgreen);
-            color: var(--text-light);
-        }
-
-        h2 {
-            text-align: center;
-            margin-bottom: 1.5rem;
-            color: inherit;
-        }
-
-        .schools {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
-        }
-
-        .card {
-            /*background-color: rgba(255, 255, 255, 0.9);*/
-            background-color: #a3a87a;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card h3 {
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .card p {
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-        }
 
 /* ---------------Style for the close button--------------*/
         .closeButton {
@@ -239,7 +305,7 @@
             padding: 1rem;
             margin-top: auto;
         }
-
+/* ---------------Responsive Design----------------- */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
