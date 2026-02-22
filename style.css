@@ -349,7 +349,7 @@
         }
 
         .skill-card {
-            background: rgba(116, 192, 113, 0.719);
+            background:rgb(70, 134, 68);
             padding: 2rem;
             border-radius: 20px;
             color: var(--text-light);
@@ -485,3 +485,4 @@
                 padding: 2rem 0;
             }
         }
+
